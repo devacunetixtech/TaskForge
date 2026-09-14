@@ -1,6 +1,6 @@
 import type { Abi, Address } from "viem";
 
-export const botBountyAddress = process.env.NEXT_PUBLIC_BOTBOUNTY_CONTRACT_ADDRESS as Address | undefined;
+export const botBountyAddress = (process.env.NEXT_PUBLIC_TASKFORGE_CONTRACT_ADDRESS || process.env.NEXT_PUBLIC_BOTBOUNTY_CONTRACT_ADDRESS) as Address | undefined;
 
 export const botBountyAbi = [
   { type: "function", name: "nextBountyId", stateMutability: "view", inputs: [], outputs: [{ name: "", type: "uint256" }] },

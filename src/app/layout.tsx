@@ -3,8 +3,8 @@ import "./globals.css";
 import { Providers } from "./providers";
 
 export const metadata: Metadata = {
-  title: "BotBounty | On-chain work, rewarded",
-  description: "A decentralized bounty board for BOT Chain.",
+  title: "TaskForge | On-chain work, rewarded",
+  description: "A decentralized task marketplace for BOT Chain.",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

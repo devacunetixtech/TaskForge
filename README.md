@@ -1,6 +1,6 @@
-# BotBounty
+# TaskForge
 
-BotBounty is a decentralized bounty board for BOT Chain: creators lock native BOT in an escrow contract, contributors submit work, and approved submissions are paid on-chain.
+TaskForge is a decentralized task marketplace for BOT Chain: creators lock native BOT in an escrow contract, contributors submit work, and approved submissions are paid on-chain.
 
 ## Stack
 
@@ -17,7 +17,7 @@ cp .env.example .env.local
 npm run dev
 ```
 
-The current frontend is a polished read-only/demo board with local modal interactions. Set `BOTBOUNTY_CONTRACT_ADDRESS` after deployment, then wire the generated ABI into the write handlers in `src/app/page.tsx` using the installed `wagmi` and `viem` packages.
+The frontend is branded TaskForge and reads the deployed contract for live bounties, balances, submissions, and transaction status. Set `NEXT_PUBLIC_TASKFORGE_CONTRACT_ADDRESS` for browser-side contract access; the legacy `NEXT_PUBLIC_BOTBOUNTY_CONTRACT_ADDRESS` remains supported for compatibility.
 
 ## Contract deployment
 
@@ -43,12 +43,12 @@ npm run verify:testnet -- 0xYourDeployedAddress
 
 The current testnet deployment is verified at [`0xB597...22dF`](https://scan.bohr.life/address/0xB597b8a8068Cc3eB376Cb0c2C9C16F1bC92B22dF#code).
 
-The contract uses native BOT as the reward asset. `createBounty` escrows the caller's `msg.value`; `approveSubmission` pays the selected solver; `cancelExpiredBounty` refunds the creator after the deadline if no winner was selected.
+The deployed escrow contract retains its original Solidity name, `BotBounty`, to preserve verified contract identity. It uses native BOT as the reward asset. `createBounty` escrows the caller's `msg.value`; `approveSubmission` pays the selected solver; `cancelExpiredBounty` refunds the creator after the deadline if no winner was selected.
 
 ## Production checklist
 
 - Verify the deployed address and source on the BOT Chain Blockscout explorer.
-- Add the contract address to `.env.local` as `BOTBOUNTY_CONTRACT_ADDRESS`.
+- Add the contract address to `.env.local` as `NEXT_PUBLIC_TASKFORGE_CONTRACT_ADDRESS`.
 - Configure a WalletConnect project ID if using WalletConnect connectors.
 - Add an indexer or event query layer for production-scale bounty discovery.
 - Audit the contract before mainnet use; this MVP intentionally keeps the contract surface small and uses reentrancy protection around native-token transfers.This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
