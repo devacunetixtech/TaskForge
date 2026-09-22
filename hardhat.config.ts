@@ -8,21 +8,33 @@ const config: HardhatUserConfig = {
     botchainTestnet: {
       url: process.env.BOTCHAIN_RPC_URL || "https://rpc.bohr.life",
       chainId: 968,
+      timeout: 120_000,
       accounts: process.env.DEPLOYER_PRIVATE_KEY ? [process.env.DEPLOYER_PRIVATE_KEY] : [],
     },
     botchain: {
       url: process.env.BOTCHAIN_MAINNET_RPC_URL || "https://rpc.botchain.ai",
       chainId: 677,
+      timeout: 120_000,
       accounts: process.env.DEPLOYER_PRIVATE_KEY ? [process.env.DEPLOYER_PRIVATE_KEY] : [],
     },
   },
   etherscan: {
-    apiKey: { botchainTestnet: process.env.BOTCHAIN_VERIFIER_API_KEY || "blockscout" },
-    customChains: [{
-      network: "botchainTestnet",
-      chainId: 968,
-      urls: { apiURL: process.env.BOTCHAIN_VERIFIER_URL || "https://scan.bohr.life/api", browserURL: "https://scan.bohr.life" },
-    }],
+    apiKey: {
+      botchainTestnet: process.env.BOTCHAIN_VERIFIER_API_KEY || "blockscout",
+      botchain: process.env.BOTCHAIN_MAINNET_VERIFIER_API_KEY || "blockscout",
+    },
+    customChains: [
+      {
+        network: "botchainTestnet",
+        chainId: 968,
+        urls: { apiURL: process.env.BOTCHAIN_VERIFIER_URL || "https://scan.bohr.life/api", browserURL: "https://scan.bohr.life" },
+      },
+      {
+        network: "botchain",
+        chainId: 677,
+        urls: { apiURL: process.env.BOTCHAIN_MAINNET_VERIFIER_URL || "https://scan.botchain.ai/api", browserURL: "https://scan.botchain.ai" },
+      },
+    ],
   },
 };
 

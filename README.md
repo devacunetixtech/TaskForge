@@ -7,7 +7,7 @@ TaskForge is a decentralized task marketplace for BOT Chain: creators lock nativ
 - Next.js 16, React 19, TypeScript, Tailwind CSS 4
 - `wagmi` and `viem` for wallet and EVM integration
 - Solidity 0.8.24, OpenZeppelin `ReentrancyGuard`, Hardhat
-- BOT Chain testnet: chain ID `968`, RPC `https://rpc.bohr.life`, explorer `https://scan.bohr.life`
+- BOT Chain mainnet: chain ID `677`, RPC `https://rpc.botchain.ai`, explorer `https://scan.botchain.ai`
 
 ## Local setup
 
@@ -29,19 +29,19 @@ npm run contract:compile
 npm run contract:test
 ```
 
-3. Deploy to BOT Chain testnet:
+3. Deploy to BOT Chain mainnet:
 
 ```bash
-npm run deploy:testnet
+npm run deploy:mainnet
 ```
 
 4. Verify the deployed source:
 
 ```bash
-npm run verify:testnet -- 0xYourDeployedAddress
+npm run verify:mainnet -- 0xYourDeployedAddress
 ```
 
-The current testnet deployment is verified at [`0xB597...22dF`](https://scan.bohr.life/address/0xB597b8a8068Cc3eB376Cb0c2C9C16F1bC92B22dF#code).
+The current mainnet deployment is verified at [`0x14Bc...7D51`](https://scan.botchain.ai/address/0x14BcB89bFC57540274055Fd275EbA55C9b117D51#code) and is configured through `NEXT_PUBLIC_TASKFORGE_CONTRACT_ADDRESS`. Testnet deployment and verification scripts remain available for development.
 
 The deployed escrow contract retains its original Solidity name, `BotBounty`, to preserve verified contract identity. It uses native BOT as the reward asset. `createBounty` escrows the caller's `msg.value`; `approveSubmission` pays the selected solver; `cancelExpiredBounty` refunds the creator after the deadline if no winner was selected.
 
