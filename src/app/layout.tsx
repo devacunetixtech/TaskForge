@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Providers } from "./providers";
+import { SiteFooter } from "./components/SiteFooter";
 
 export const metadata: Metadata = {
   title: "TaskForge | On-chain work, rewarded",
@@ -10,7 +11,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en">
-      <body><Providers>{children}</Providers></body>
+      <body><Providers>{children}<SiteFooter /></Providers></body>
     </html>
   );
 }
