@@ -8,7 +8,7 @@ const botChainLinks = [
 
 export function SiteFooter() {
   return (
-    <footer className="site-footer">
+    <footer className="site-footer" id="bot-chain-footer">
       <Link className="brand" href="/" aria-label="TaskForge home">
         <span className="brand-mark">T</span>
         <span>Task<span className="muted-brand">Forge</span></span>
